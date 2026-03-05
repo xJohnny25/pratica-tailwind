@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="dist/output.css" />
+    <title>Formulario de Registro</title>
+  </head>
+  <body
+    class="min-h-screen w-full bg-linear-to-br from-slate-900 via-purple-900 to-slate-900 flex flex-col items-center justify-start px-4 py-10 md:py-16 md:justify-center"
+  >
+    <h1
+      class="mb-8 text-center text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl"
+    >
+      Formulario de registro
+    </h1>
+
+    <form
+      id="formCrear"
+      class="w-full max-w-4xl rounded-2xl bg-linear-to-b from-purple-900/80 to-slate-950/80 shadow-2xl shadow-purple-900/40 backdrop-blur-xl px-4 py-6 sm:px-6 sm:py-8 md:px-10 md:py-12 space-y-6 text-white"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="space-y-1">
+          <label for="nombre" class="block text-sm font-medium text-slate-100"
+            >Nombre</label
+          >
+          <input
+            id="nombre"
+            required
+            name="nombre"
+            type="text"
+            placeholder="Introduce tu nombre"
+            autocomplete="name"
+            maxlength="50"
+            class="mt-1 block w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-slate-400 focus:border-white focus:outline-none"
+          />
+        </div>
+
+        <div class="space-y-1">
+          <label
+            for="apellidos"
+            class="block text-sm font-medium text-slate-100"
+            >Apellidos</label
+          >
+          <input
+            id="apellidos"
+            name="apellidos"
+            type="text"
+            placeholder="Introduce tus apellidos"
+            autocomplete="family-name"
+            maxlength="70"
+            class="mt-1 block w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-slate-400 focus:border-white focus:outline-none"
+          />
+        </div>
+
+        <div class="space-y-1">
+          <label
+            for="contrasena"
+            class="block text-sm font-medium text-slate-100"
+            >Contraseña</label
+          >
+          <input
+            id="contrasena"
+            required
+            name="contrasena"
+            type="password"
+            placeholder="Introduce tu contraseña"
+            minlength="6"
+            maxlength="30"
+            autocomplete="new-password"
+            class="mt-1 block w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-slate-400 focus:border-white focus:outline-none"
+          />
+        </div>
+
+        <div class="space-y-1">
+          <label for="telefono" class="block text-sm font-medium text-slate-100"
+            >Teléfono</label
+          >
+          <input
+            id="telefono"
+            name="telefono"
+            type="tel"
+            placeholder="Ej: 600123456"
+            pattern="[0-9]{9}"
+            autocomplete="tel"
+            class="mt-1 block w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-slate-400 focus:border-white focus:outline-none"
+          />
+        </div>
+      </div>
+
+      <div class="space-y-1">
+        <label for="email" class="block text-sm font-medium text-slate-100"
+          >Email</label
+        >
+        <input
+          id="email"
+          required
+          name="email"
+          type="email"
+          placeholder="ejemplo@correo.com"
+          autocomplete="email"
+          class="mt-1 block w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-slate-400 focus:border-white focus:outline-none"
+        />
+      </div>
+
+      <div class="space-y-2">
+        <span class="text-sm font-medium text-slate-100">Sexo</span>
+        <div class="flex flex-wrap gap-4">
+          <label
+            for="masculino"
+            class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-100 hover:bg-white/10 cursor-pointer transition-colors"
+          >
+            <input
+              id="masculino"
+              name="genero"
+              type="radio"
+              value="masculino"
+              class="h-4 w-4 accent-fuchsia-400 bg-transparent focus:outline-none"
+            />
+            <span>Masculino</span>
+          </label>
+
+          <label
+            for="femenino"
+            class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-100 hover:bg-white/10 cursor-pointer transition-colors"
+          >
+            <input
+              id="femenino"
+              name="genero"
+              type="radio"
+              value="femenino"
+              class="h-4 w-4 accent-fuchsia-400 bg-transparent focus:outline-none"
+            />
+            <span>Femenino</span>
+          </label>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <input
+          type="submit"
+          value="Crear Usuario"
+          class="mt-6 inline-flex items-center justify-center rounded-full px-8 py-2.5 text-sm font-semibold text-white bg-fuchsia-500 hover:bg-fuchsia-400 active:bg-fuchsia-600 shadow-lg shadow-fuchsia-900/40 hover:shadow-fuchsia-500/50 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+        />
+      </div>
+    </form>
+
+    <script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/form.js"></script>
+  </body>
+</html>

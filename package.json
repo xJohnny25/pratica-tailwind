@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "sweetalert2": "^11.26.18"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.1",
+    "tailwindcss": "^4.2.1"
+  }
+}

@@ -1,0 +1,2 @@
+{"nombre":"adios","apellidos":"asdasd","contrasena":"asdasd","telefono":"612312312","email":"alumno9@example.com","genero":"masculino"}
+{"nombre":"yo","apellidos":"sdasdasd","contrasena":"123asd","telefono":"612312312","email":"alumno100@example.com","genero":"femenino"}
