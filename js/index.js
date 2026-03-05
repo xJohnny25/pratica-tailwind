@@ -41,57 +41,8 @@
   },
 ]; */
 
-const mockUsers = [
-  {
-    id: 1,
-    nombre: "Juan",
-    apellidos: "Pérez García",
-    contrasena: "abc12345",
-    telefono: "600001111",
-    email: "juan.perez@example.com",
-    genero: "masculino",
-  },
-  {
-    id: 2,
-    nombre: "María",
-    apellidos: "López Sánchez",
-    contrasena: "maria456",
-    telefono: "600002222",
-    email: "maria.lopez@example.com",
-    genero: "femenino",
-  },
-  {
-    id: 3,
-    nombre: "Carlos",
-    apellidos: "Ramírez Díaz",
-    contrasena: "car123los",
-    telefono: "600003333",
-    email: "carlos.ramirez@example.com",
-    genero: "masculino",
-  },
-  {
-    id: 4,
-    nombre: "Lucía",
-    apellidos: "Fernández Ruiz",
-    contrasena: "lucia789",
-    telefono: "600004444",
-    email: "lucia.fernandez@example.com",
-    genero: "femenino",
-  },
-  {
-    id: 5,
-    nombre: "David",
-    apellidos: "Martínez Torres",
-    contrasena: "david2024",
-    telefono: "600005555",
-    email: "david.martinez@example.com",
-    genero: "masculino",
-  },
-];
-
 let users = [];
 let editingIndex = null; // guardamos el index del usuario que editamos
-let isMockData = false;
 
 window.addEventListener("DOMContentLoaded", async () => {
   const tableBody = document.querySelector("tbody");
@@ -103,16 +54,10 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   try {
     users = await fetchUsers();
-    if (!users || users.length === 0) {
-      isMockData = true;
-      users = [...mockUsers];
-    }
+    if (!users) users = [];
     loadUsers(users, tableBody);
   } catch (e) {
     Swal.fire("Error", "No se pudieron cargar los usuarios", "error");
-    isMockData = true;
-    users = [...mockUsers];
-    loadUsers(users, tableBody);
   }
 
   searchInput.addEventListener("input", (event) =>
@@ -197,14 +142,6 @@ function createDeleteButton(user, tableBody) {
     });
     if (!ok.isConfirmed) return;
 
-    // Datos de prueba: eliminamos solo en memoria y recargamos la tabla
-    if (isMockData) {
-      users = users.filter((u) => u.id !== user.id);
-      loadUsers(users, tableBody);
-      Swal.fire("Listo", "Usuario de prueba eliminado", "success");
-      return;
-    }
-
     try {
       const res = await fetch("ws/deleteUsuario.php?id=" + user.id);
       const data = await res.json();
@@ -262,19 +199,6 @@ async function saveEdit(tableBody) {
   if (!ok.isConfirmed) return;
 
   const user = users[editingIndex];
-  // Edición en modo datos de prueba (solo front)
-  if (isMockData) {
-    user.nombre = document.getElementById("f_nombre").value.trim();
-    user.apellidos = document.getElementById("f_apellidos").value.trim();
-    user.telefono = document.getElementById("f_telefono").value.trim();
-    user.email = document.getElementById("f_email").value.trim();
-    user.genero = document.getElementById("f_sexo").value;
-
-    loadUsers(users, tableBody);
-    Swal.fire("Guardado", "Usuario de prueba actualizado", "success");
-    editingIndex = null;
-    return;
-  }
   const formData = new FormData();
   formData.append("nombre", document.getElementById("f_nombre").value.trim());
   formData.append(
